@@ -1,7 +1,7 @@
 from fastapi import FastAPI , Header
 import uvicorn
 from pydantic import BaseModel
-from ftapi import send_alert
+from webhook.notif_alert import send_alert_discord
 
 app = FastAPI()
 
@@ -14,7 +14,7 @@ def alert(
 		alert: Alert , 
 		x_device_name: str = Header(default="Unknown Device", alias="X-Device-Name")) :
 	try :
-		send_alert(alert.level , alert.message , x_device_name)	
+		send_alert_discord(alert.level , alert.message , x_device_name)	
 		return {"ok": True}
 	except Exception as e :
 		return {"message": e }

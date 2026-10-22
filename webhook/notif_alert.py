@@ -6,7 +6,7 @@ load_dotenv()  # Charge le fichier .env
 
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK")
 
-def send_alert(
+def send_alert_discord(
     level , 
     message , 
     x_device_name
