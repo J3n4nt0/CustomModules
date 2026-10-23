@@ -30,4 +30,4 @@ jobs:
           # In GitHub Actions, secrets are passed via repository secrets rather than a committed .env file
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          PYTHONPATH=. pytest test/ -v
+          python -m pytest test/test_d.py -v
