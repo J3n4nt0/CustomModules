@@ -18,4 +18,4 @@ def alert(
     return {"ok": True}
 
 if __name__ == "__main__":
-    uvicorn.run("test:app", port=5000, host="0.0.0.0", reload=True)
+    uvicorn.run("app:app", port=5000, host="0.0.0.0", reload=True)

@@ -1,11 +1,10 @@
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
-from test import app
+from app import app
 
 client = TestClient(app)
 
 def test_alert_success():
-    """Test successful alert delivery without sending a real request to Discord."""
     with patch("webhook.notif_alert.requests.post") as mock_post:
         mock_response = MagicMock()
         mock_response.status_code = 200
@@ -22,6 +21,10 @@ def test_alert_success():
         assert mock_post.called
 
 def test_alert_invalid_payload():
-    """Test that missing required fields properly return HTTP 422 Unprocessable Entity."""
     response = client.post("/alert", json={"level": "info"})
     assert response.status_code == 422
+
+def test_awk():
+    from awk.awk import awk
+    columns = awk("LICENSE" , 1)
+    assert len(columns) == 21
