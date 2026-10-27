@@ -40,4 +40,5 @@ def send_alert_discord(
         r = requests.post(DISCORD_WEBHOOK_URL, json=discord_payload, timeout=5)
         r.raise_for_status()
     except requests.RequestException as e:
-        raise HTTPException(status_code=500, detail=f"Failed to connect to Discord: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to connect to Discord : {str(e)}")
+

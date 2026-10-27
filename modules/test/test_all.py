@@ -26,5 +26,11 @@ def test_alert_invalid_payload():
 
 def test_awk():
     from awk.awk import awk
-    columns = awk("LICENSE" , 1)
+    columns = awk("../LICENSE" , 1)
     assert len(columns) == 21
+
+def test_ytapi():
+    from ytsearch.ytapi import search
+    data = search("hello")
+    assert data["status"] == 200
+
